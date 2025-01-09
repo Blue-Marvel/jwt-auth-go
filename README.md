@@ -79,25 +79,29 @@ jwt-auth/
 
 ### 1. **User Registration**
 
-- **URL**: `/api/register`
+- **URL**: `/api/auth/signup`
 - **Method**: `POST`
 - **Body**:
   ```json
   {
-    "email": "user@example.com",
-    "password": "securepassword"
+    "first_name": "",
+    "last_name": "",
+    "password": "",
+    "email": "",
+    "phone": "",
+    "user_type": "USER"|"ADMIN"
   }
   ```
 - **Response**:
   ```json
   {
-    "message": "User registered successfully!"
+    "InsertedID": "123245"
   }
   ```
 
 ### 2. **User Login**
 
-- **URL**: `/api/login`
+- **URL**: `/api/auth/login`
 - **Method**: `POST`
 - **Body**:
   ```json
@@ -106,50 +110,46 @@ jwt-auth/
     "password": "securepassword"
   }
   ```
-- **Response**:
-  ```json
-  {
-    "token": "your.jwt.token"
-  }
-  ```
 
-### 3. **Protected Route**
+### 3. \*_All Users_
 
-- **URL**: `/api/protected`
+- **URL**: `/api/users`
 - **Method**: `GET`
 - **Headers**:
   ```
   Authorization: Bearer your.jwt.token
   ```
-- **Response**:
-  ```json
-  {
-    "message": "Access granted!"
-  }
+
+### 4. \*_Users by Id_
+
+- **URL**: `/api/users/user_id`
+- **Method**: `GET`
+- **Headers**:
+  ```
+  Authorization: Bearer your.jwt.token
   ```
 
 ---
 
 ## Key Files
 
-### 1. **`jwt_helper.go`**
+### 1. **`token_helper.go`**
+
+### 2. **`auth_helper.go`**
 
 - Handles JWT generation and validation.
 
-### 2. **`auth_middleware.go`**
+### 3. **`auth_middleware.go`**
 
 - Middleware to protect routes by verifying JWTs.
 
-### 3. **`auth_controller.go`**
-
-- Manages user registration and login.
-
 ### 4. **`user_controller.go`**
 
-- Handles user-related operations (e.g., fetching user data).
+- Handles user-related operations (e.g.,user auth and fetching user data).
 
 ---
 
+<!--
 ## Running Tests
 
 Write unit tests to validate the JWT functionality and other application features:
@@ -158,8 +158,8 @@ Write unit tests to validate the JWT functionality and other application feature
 go test ./...
 ```
 
----
-
+--- -->
+<!--
 ## Further Improvements
 
 - Add password hashing (e.g., using `bcrypt`).
@@ -168,4 +168,4 @@ go test ./...
 
 ---
 
-This README provides a starting point for building a secure Go application with JWT authentication. Feel free to extend or modify the implementation based on your project needs.
+This README provides a starting point for building a secure Go application with JWT authentication. Feel free to extend or modify the implementation based on your project needs. -->
